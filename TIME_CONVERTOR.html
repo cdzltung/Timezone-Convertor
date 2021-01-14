@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<!--/*best way to align something to center*/
+			display: flex;
+			justify-content:center;
+			/* expands or shrinks elements to fill space */
+			/*display:flex;*/ -->
+			
+<head>
+	<script src="Javascripts/convert.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300&family=Mukta:wght@300&display=swap" rel="stylesheet">
+	<style>
+	body{
+	font-family: 'Commissioner', sans-serif;
+	background:linear-gradient(180deg,#0B1A4D,#0067F4);
+	background-size: cover;
+	background-repeat: no-repeat;
+	 background-attachment: fixed;
+	 margin:0;
+	}
+.others {color:black}
+/*header*/
+header{
+	background-color:#0B1A4D;
+	display: flex;
+		justify-content: center;
+	}
+
+.logo{
+	width:auto;
+	margin:0;
+}	
+	img{
+		size:40%;
+		transform:scale(0.4,0.4);
+	}
+
+
+
+/*Contains entering info div, button div, and display divs */
+	.container{
+		display:grid;
+		grid-template-columns:1fr auto 1fr;
+	}
+/*info entering div*/	
+	.time-info{
+	display:grid;
+	grid-template-rows:1fr 1fr 1fr 1fr;
+	}
+		.enter-date{
+		display: flex;
+		justify-content: center;
+		}
+		.enter-time{
+		display: flex;
+		justify-content: center;
+		}
+		.enter-zone{
+		display: flex;
+		justify-content: center;
+		}
+		input{
+		color:#FFFFFF;
+		text-align:center;
+		font-size:40px;
+		padding-top:10px;
+		font-family: 'Commissioner', sans-serif;
+		background-color:transparent;
+		border:none;
+		}
+		select{
+		background-color:transparent;
+		font-size:40px;
+		font-family: 'Commissioner', sans-serif;
+		border:none;
+		padding:20px;
+	}
+/*convert and share link*/
+		.convert{
+		display: flex;
+		justify-content: center;
+		
+		}
+		/*making triangle shape for play buttton*/
+			/*.convert{
+			background-color:#0c1440;
+			
+			}*/
+			
+			.convert > button{
+				margin-top:250px;
+				height:80px;
+				width:80px;
+				background-color:#0B1A4D;
+				border:none;
+				border-radius:10px;
+				padding:20px;
+				padding-left:25px;
+				cursor:pointer;
+				
+				}
+				.inner_button{
+    			width: 0;
+				height: 0;
+				border-top: 15px solid transparent;
+				border-left: 30px solid #FFFFFF;
+				border-bottom: 15px solid transparent;
+
+        /* Size */
+        height: 0px;
+        width: 0px;
+				}	
+				
+		textarea{
+		border:none;
+		/*border-bottom:solid 1px;*/
+		resize:none;
+		background:transparent;
+		color:#FFFFFF;
+		height:150px;
+		width:300px;
+		
+		
+		
+		/*outline: none;*/
+		
+		}
+		::placeholder{
+		color:rgba(250,250,250,0.7);
+		text-align:center;
+		font-size:40px;
+		font-family: 'Commissioner', sans-serif;
+		text-decoration:underline;
+		
+	}		
+		/*---------*/
+		.link{
+		display: flex;
+		justify-content: center;
+		}
+			.link > button{
+			background-color:#0c1440;
+			font-size:20px;
+			color:#FFFFFF;
+			font-family: 'Commissioner', sans-serif;
+			border-radius:12px;
+			border:none;
+			width:200px;
+			height:50px;
+			cursor:pointer;
+			box-shadow: none;
+			}
+
+/*display results div*/	
+	.display{
+	display:grid;
+	grid-template-rows:1fr 1fr 1fr 1fr;	
+	}
+		#result{
+		display: flex;
+		justify-content: center;	
+		}
+
+/*-------------------*/
+	p{
+	text-align:center;
+	color:#FFFFFF;
+	font-weight:bold;
+	}
+	#show-zone{
+	text-align:center;
+	color:#FFFFFF;
+	font-weight:bold;	
+	}
+/*--------------POPUP WINDOW-----------*/
+.popup .overlay{
+      position:fixed;
+      top:0px;
+      left:0px;
+      /*covers the whole page so that only popup stands out*/
+      width:100vw;
+      height:100vh;
+      background: rgba(0,0,0, 0.5);
+      z-index:1;
+      /*this keeps it hidden*/
+      display:none;
+    }
+    
+     .popup .outer-display{
+        width:400px;
+        height:300px;
+        border:none;
+        border-radius: 30px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        /*scale keeps it hidden*/
+        transform: translate(-50%,-50%) scale(0);
+        background-color:#FFFFFF;
+        padding:15px;
+        box-sizing:border-box;
+          text-align:center;
+          font-family: 'Commissioner', sans-serif;
+          display:grid;
+          margin:0;
+          padding:0;
+        }
+        .outer-display .top{
+        	height:50px;
+          width:400px;
+          background-color:#0B1A4D;
+          border-radius: 30px 30px 0 0 ;
+        	
+        }
+        	.outer-display .top > button{
+        		position:absolute;
+        		width:30px;
+            	height:30px;
+            	top:10px;
+            	right:10px;
+            	border-radius: 50%;
+            	border:none;
+            	cursor:pointer;
+            	outline:none;
+        		}
+        .outer-display .bottom{
+        	height:50px;
+          width:400px;
+          background-color:#0B1A4D;
+          border-radius: 0 0 30px 30px ;
+        }
+        .outer-display .display-link > p{
+        	color:#0067F4;
+        	font-family: 'Commissioner', sans-serif;
+        	font-weight:bold;
+        }
+        .display-link{
+          height:200px;
+          padding:15px;
+        }
+        	#display_link{
+        		padding:10px;
+            color:#0B1A4D;
+            font-weight:bold;
+            font-size:15px;
+            overflow-wrap: break-word;
+          word-break: break-all;
+        		
+        	}
+        
+    .popup.active .overlay{
+      display:block;
+     }
+     .popup.active .outer-display{
+       /*transition:all 300ms ease-in-out;*/
+      transform: translate(-50%,-50%) scale(1);
+     }
+	
+	</style>
+</head>
+
+<body>
+
+<header>
+	<div class="logo">
+		<a href="https://www.qoom.io/" target="_blank"><img src="qoom-white.png" alt="qoom logo"></a>
+	</div>
+	
+</header>
+
+<div id="if_shared"></div>
+
+<main>
+<div class="container">
+	
+	<div class="time-info" name="enter-info">
+	<div><p>Enter date, time, and timezone of your event here</p></div>
+		<div class="enter-date">
+			<input type="date" id="startDate">
+		</div>
+
+		<div class="enter-time">
+			<input type="time" class="time" id="startTime">
+		</div>
+
+		<form name="timezone-dropdown">
+			<div class="enter-zone">
+				<select id="your_timezone" required>
+				<option style="color:;" value="null">Timezone</option>
+				<option style="color:black;" value="Atlantic/Cape_Verde">CET</option>
+				<option value="">EET</option>
+				<option value="">ART</option>
+				<option value="America/Fortaleza|Etc/GMT+3">EAT</option>
+				<option value="">MET</option>
+				<option value="">NET</option>
+				<option value="GMT+5">PLT</option>
+				<option value="">IST</option>
+				<option value="">BST</option>
+				<option value="">VST</option>
+				<option value="">CTT</option>
+				<option value="">JST</option>
+				<option value="">ACT</option>
+				<option value="">AET</option>
+				<option value="">SST</option>
+				<option value="">NST</option>
+				<option value="">MIT</option>
+				<option value="">HST</option>
+				<option value="">AST</option>
+				<option value="America/Vancouver">PST</option>
+				<option value="">PNT</option>
+				<option value="">MST</option>
+				<option value="">CST</option>
+				<option value="America/Toronto">EST</option>
+				<option value="">IET</option>
+				<option value="">PRT</option>
+				<option value="">CNT</option>
+				<option value="">AGT</option>
+				<option value="">BET</option>
+				<option value="">CAT</option>
+				</select>
+			</div>
+		</form>
+	</div>	
+	
+	<div class="converter">
+		<div><p>Click here to convert to your local time zone</p></div>
+<!--POPUP WINDOW-->		
+		<div class="popup" id="pop-up">
+    		<div class="overlay">
+
+        		<div class="outer-display">
+        			<div class="top">
+        				<button onclick="popUp()">&times;</button>
+        			</div>
+        			
+        			<div class="display-link">
+        				<div id="display_link"></div>
+        				<p>Share this link with another user. The time, date, and timezone you entered will be displayed in this link, and the user will be able to convert it to their local timezone!</p>
+        			</div>
+        			
+        			<div class="bottom"></div>
+        			
+        		</div>
+        		
+    		</div>
+    	
+    	</div>
+<!--/////////////////////-->		
+		<div class="convert" name="convert">
+			<button onclick="convert_time()"><div class="inner_button"></div></button>
+		</div>
+		
+	</div>
+	
+	<div class="display" name="display">
+		<div><p>Results will be displayed here</p></div>
+		<div id="result">
+			<textarea placeholder="mm/dd/yyyy" id="result_date" readonly></textarea>
+		</div>
+				
+		<div id="result">
+			<textarea placeholder="--:-- --" id="result_time" readonly></textarea>
+		</div>
+				
+		<div id="result">
+			<textarea placeholder="GMT" id="result_zone" readonly></textarea>
+		</div>	
+		<!--let user know what their local time zone is-->	
+		<div id="show-zone"></div>
+	</div>
+	
+	
+</div>
+
+
+	<div class="link" name="link">
+		<button onclick='createLink(); popUp()'>Share a link</button>
+	</div>
+	
+
+<br>
+<br>
+<div><p style="display:inline">Created by</p> <a href="#" style="display:inline">Carmel</a> <p style="display:inline">and</p> <a href="https://alyzee.qoom.space/profile" style="display:inline">Alyzee</a></div>
+</main>
+	
+	
+<!--JAVASCRIPT-->
+<script>checkUrl()</script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+		<script src="https://momentjs.com/downloads/moment-timezone-with-data-10-year-range.js"></script>
+		<script>
+			var startTime = document.getElementById("startTime");
+			var startDate = document.getElementById("startDate");
+
+			var t;
+			var d;
+			var timezone;
+
+			startTime.addEventListener("input", function () {
+				var time = startTime.value;
+				t = moment(time, ["H:mm"])
+					.format("h:mmA")
+
+			}, false);
+			startDate.addEventListener("input", function () {
+				var date = startDate.value;
+				d = moment(date, ["YYYY-MM-DD"])
+					.format("DD/MM/YYYY")
+			}, false);
+
+			var data = new URLSearchParams(location.search)
+			var stime = data.get('startTime');
+			var sdate = data.get('startDate');
+			var stimezone = data.get('your_timezone')
+			if (stime) {
+				startTime.value = stime;
+				t = moment(stime, ["H:mm"])
+					.format("h:mmA")
+			}
+			if (sdate) {
+				startDate.value = sdate;
+				d = moment(sdate, ["YYYY-MM-DD"])
+					.format("DD/MM/YYYY")
+			}
+
+			var your_first_timezone = document.getElementById('your_timezone');
+			your_first_timezone.addEventListener('change', function () {
+				timezone = your_first_timezone.value;
+			}, false);
+
+			if (stimezone) {
+				your_first_timezone.value = stimezone;
+			}
+
+			/*document.getElementById("result_date")
+				.placeholder = "yyyy-mm-dd   --:-- --   " + moment()
+				.tz(moment.tz.guess())
+				.format('z');*/
+
+			function convert_time() {
+				var your_time = t
+				var your_timezone = timezone
+				let b = moment();
+
+				b = moment.tz(d + " " + your_time, "DD/MM/YYYY h:mmA", your_timezone);
+				console.log(b.toString());
+				b.local();
+				console.log(`User's time => ${b.toString()}`);
+				/*
+				document.getElementById("result_date")
+					.placeholder = b.format("MM/DD/YYYY   h:mmA") + "   " + moment()
+					.tz(moment.tz.guess())
+					.format('z');*/
+					
+				//format to split results into date, time, and timezone
+					document.getElementById("result_date")
+					.placeholder = b.format("MM/DD/YYYY") + "   ";
+					
+					document.getElementById("result_time")
+					.placeholder = b.format("h:mm A") + "   ";
+					
+					document.getElementById("result_zone")
+					.placeholder = moment()
+					.tz(moment.tz.guess())
+					.format('z');
+				//display timezone
+					document.getElementById("show-zone").innerHTML= "Your local timezone is " + moment()
+					.tz(moment.tz.guess())
+					.format('z');
+			}
+
+			/*
+			`1. When creating link, put data into url
+			2. When loading page, read data from url
+			*/
+			function createLink() {
+				if (!startDate.value) return alert('Please enter a start date');
+				if (!startTime.value) return alert('Please enter a start time');
+			//	if (!stimezone.value) return alert('Please enter a timezone');
+				let url = location.href.split('?')[0];
+				url = `${url}?startDate=${startDate.value}&startTime=${startTime.value}&your_timezone=${your_first_timezone.value}`;
+
+				const div = document.querySelector('.link');
+				const a = document.createElement('a');
+				a.href = url;
+				
+				a.innerText = url;
+				document.getElementById('display_link').innerHTML= a ;
+				//div.appendChild(a);
+				
+			
+			}
+	/*
+		pop-up window display with link	
+			*/
+			function popUp(){
+				if (startDate.value && startTime.value) 
+				document.getElementById("pop-up").classList.toggle("active");
+			}  
+		
+			
+		//check for shared link?	
+			function checkUrl(){
+				if(window.location.href=="https://alyzee.qoom.space/Time%20Zone%20Converter/TIME_CONVERT.html")
+				document.getElementById("if_shared").innerHTML="test";
+			}
+			/*if(url!='https://happyhat15.qoom.space/Time%20Zone%20Converter/second.html')
+			document.getElementById("shared").innerHTML("Looks like you recieved a shared link.");*/
+			
+		</script>
+</body>
+
+
+</html>
